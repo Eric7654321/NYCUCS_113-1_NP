@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project3.mapper.UserMapper">
+    <update id="update">
+        update np_project3.user
+        <set>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="ip != null and ip != ''">
+                ip = #{ip},
+            </if>
+            <if test="port != null and port != ''">
+                port = #{port},
+            </if>
+            <if test="status != null and port != ''">
+                status = #{status},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where username = #{username}
+    </update>
+    <!--    複數刪除操作-->
+    <delete id="delete">
+        delete from np_project3.user where username in
+        <foreach collection="usernames" item="username" separator="," open="(" close=")">
+            #{username}
+        </foreach>
+    </delete>
+</mapper>
