@@ -4,9 +4,9 @@ spring:
       load-on-startup: 1
     # Database 配置
   datasource:
-    url: jdbc:mysql://project3server.mysql.database.azure.com:3306/np_project3?useSSL=true&requireSSL=true&verifyServerCertificate=true
-    username: Lu
-    password: Eric7654321
+    url: jdbc:mysql://{your_url}:3306/np_project3?useSSL=true&requireSSL=true&verifyServerCertificate=true
+    username: {your_username}
+    password: {your_password}
     hikari:
       connection-test-query: SELECT 1
   jpa:
